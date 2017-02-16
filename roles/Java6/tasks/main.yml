@@ -1,0 +1,3 @@
+---
+- name: Install JDK Version 6
+  debug: msg=" Install JDK Version 6 "

@@ -1,0 +1,23 @@
+---
+- name: check input
+  fail:
+   msg: "please enter valid choices (y/n) next time"
+  when :
+   - ( {{item}} != "y" )
+   - ( {{item}} != "n" )
+  with_items:
+    - Java6
+    - Java7
+    - Java8
+
+ # when: ( Intelij != "y" ) and ( Intelij != "n" ) or
+ #       ( Eclipse != "y" ) and ( Eclipse != "n" )
+
+- name: print choises
+  debug:
+   msg: [ "Your choices are :" ,
+          "Java6={{Java6}}" ,
+          "Java7={{Java7}}" ,
+          "Java8={{Java8}}" ,
+         ]
+

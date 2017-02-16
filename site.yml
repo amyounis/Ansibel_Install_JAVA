@@ -5,18 +5,22 @@
  # gather_facts: False
 
   vars_prompt:
-   - name: "Intelij"
-     prompt: " install Intelij (y/n)?"
+   - name: "Java6"
+     prompt: " install JDK version 8 (y/n)?"
      default: n
-   - name: "Eclipse"
-     prompt: " install Eclipse (y/n)?"
+   - name: "Java7"
+     prompt: " install JDK version 7 (y/n)?"
      default: n
-
+   - name: "Java8"
+     prompt: " install JDK version 6 (y/n)?"
+     default: n
 
   roles:
    - { role: Check_Input }
-   - { role: Intelij, when: Intelij == 'y' }
-   - { role: Eclipse, when: Eclipse == 'y' }
+   - { role: Java6, when: Java6 == 'y' }
+   - { role: Java7, when: Java7 == 'y' }
+   - { role: Java8, when: Java8 == 'y' }
+
 
 
 
