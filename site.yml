@@ -1,0 +1,22 @@
+---
+- name: Install IDEs
+  hosts: all
+  remote_user: abdo
+ # gather_facts: False
+
+  vars_prompt:
+   - name: "Intelij"
+     prompt: " install Intelij (y/n)?"
+     default: n
+   - name: "Eclipse"
+     prompt: " install Eclipse (y/n)?"
+     default: n
+
+
+  roles:
+   - { role: Check_Input }
+   - { role: Intelij, when: Intelij == 'y' }
+   - { role: Eclipse, when: Eclipse == 'y' }
+
+
+
