@@ -2,6 +2,8 @@
 - name: Install IDEs
   hosts: all
   remote_user: abdo
+  become: true
+  become_method: su
  # gather_facts: False
 
   vars_prompt:

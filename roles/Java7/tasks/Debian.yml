@@ -11,7 +11,12 @@
     update_cache: yes
 
 - name: Autoaccept license for Java
-  shell: echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
+  debconf:
+   name: 'oracle-java7-installer'
+   question: 'shared/accepted-oracle-license-v1-1'
+   value: 'true'
+   vtype: 'select'
+  # shell: echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
 
 - name: Install Java 7
   apt:

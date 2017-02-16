@@ -1,19 +1,15 @@
 ---
 
-- name: ensure required packages are installed for Java 7
-  yum:
-   name: python-software-properties
-   state: latest
+- name: download Java7
+  get_url:
+  # url:  "http://download.oracle.com/otn/java/jdk/7u79-b15/jdk-7u79-linux-i586.rpm"
+   url: "http://download.oracle.com/otn-pub/java/jdk/7u79-b15/jdk-7u79-linux-i586.rpm"
+   headers: "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie"
+   validate_certs: no
+   dest: /tmp/Java7.rpm
+   mode: 0440
 
-- name: Add Java repository to sources
-  apt_repository:
-    repo: 'ppa:webupd8team/java'
-    update_cache: yes
-
-- name: Autoaccept license for Java
-  shell: echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
 
 - name: Install Java 7
-  apt:
-   name: oracle-java7-installer
-   state: latest
+  yum:
+   name: /tmp/Java7.rpm
